@@ -1,0 +1,36 @@
+<div class="card mt-5">
+    <div class="card-header">
+        {{this.isNew ? "Register Pishing" : "Update Pishing"}}
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="submitPishing(forma)" #forma="ngForm" class="row g-3">
+<div class="col-md-6">
+<label for="label-PishId"  class="form-label">PishId:</label>"
+<input #inputpishId="ngModel"  type="text" name="PishId" [ngClass]="{'is-invalid': inputpishId.touched && inputpishId.hasError('required') }" [(ngModel)]="pishing.pishId" class="form-control" id="PishId" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-Correo"  class="form-label">Correo:</label>"
+<input #inputcorreo="ngModel"  type="text" name="Correo" [ngClass]="{'is-invalid': inputcorreo.touched && inputcorreo.hasError('required') }" [(ngModel)]="pishing.correo" class="form-control" id="Correo" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-md-6">
+<label for="label-Password"  class="form-label">Password:</label>"
+<input #inputpassword="ngModel"  type="text" name="Password" [ngClass]="{'is-invalid': inputpassword.touched && inputpassword.hasError('required') }" [(ngModel)]="pishing.password" class="form-control" id="Password" value="" required>
+<div class="invalid-feedback">
+                Field required
+            </div>
+        </div>
+<div class="col-12 text-center">
+            <button class=" btn btn-primary" type="submit" [disabled]="forma.invalid">{{this.isNew ? "Register" : "Update"}}</button>
+            <button style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="limpiarForm(forma)">Clear</button>
+            <button *ngIf="!this.isNew" style="margin-left: 10px;" class=" btn btn-danger" type="button" (click)="emitChange.emit()">Cancel</button>
+          </div>
+      </form>
+    </div>
+</div>
+<router-outlet></router-outlet> 

